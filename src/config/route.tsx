@@ -1,35 +1,42 @@
 import React from 'react';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
 import Profile from '../pages/Profile';
-import Products from '../pages/Products';
 import AppLayout from '../pages/AppLayout';
 import ProtectedRoute from './protectedRoute';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
+import Landing from '../pages/Landing';
+import { RoutesEnum } from './routes';
 
 const AppRoute: React.FunctionComponent<any> = (): JSX.Element => {
 	return (
 		<Routes>
-			<Route path="/" element={<AppLayout />}>
-				<Route index element={<Home />} />
-				<Route path="login" element={<Login />} />
+			<Route path="/" element={<Outlet />}>
+				<Route index element={<Landing />} />
 				<Route
-					path="profile"
+					path={RoutesEnum.APP}
 					element={
 						<ProtectedRoute>
-							<Profile />
+							<AppLayout />
 						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="products"
-					element={
-						<ProtectedRoute>
-							<Products />
-						</ProtectedRoute>
-					}
-				/>
-				<Route path="*" element={<Home />} />
+					}>
+					<Route
+						path={RoutesEnum.HOME}
+						element={
+							<ProtectedRoute>
+								<Home />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path={RoutesEnum.PROFILE}
+						element={
+							<ProtectedRoute>
+								<Profile />
+							</ProtectedRoute>
+						}
+					/>
+				</Route>
+				<Route path="*" element={<Landing />} />
 			</Route>
 		</Routes>
 	);

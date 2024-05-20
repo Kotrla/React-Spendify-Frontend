@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AuthTabValue } from '../features/auth/enums';
-import { Box, Container, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 import LoginForm from '../features/auth/components/LoginForm';
 import RegisterForm from '../features/auth/components/RegisterForm';
 
@@ -12,14 +12,8 @@ const LoginPage: React.FC = () => {
 	};
 
 	return (
-		<Container maxWidth="sm">
-			<Box
-				display="flex"
-				flexDirection="column"
-				alignItems="center"
-				justifyContent="center"
-				mt={4}
-				maxWidth="400px">
+		<Box display="flex" alignItems="center" justifyContent="center">
+			<Box maxWidth="400px" width="100%" textAlign="center">
 				<Tabs
 					value={activeTab}
 					onChange={handleTabChange}
@@ -32,7 +26,7 @@ const LoginPage: React.FC = () => {
 				{activeTab === AuthTabValue.Login && <LoginForm />}
 				{activeTab === AuthTabValue.Register && <RegisterForm />}
 			</Box>
-		</Container>
+		</Box>
 	);
 };
 
