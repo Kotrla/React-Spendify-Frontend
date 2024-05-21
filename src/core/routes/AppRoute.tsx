@@ -1,11 +1,13 @@
 import React from 'react';
-import Home from '../pages/Home';
-import Profile from '../pages/Profile';
-import AppLayout from '../pages/AppLayout';
-import ProtectedRoute from './protectedRoute';
-import { Outlet, Route, Routes } from 'react-router-dom';
-import Landing from '../pages/Landing';
+import Home from '../../pages/Home';
 import { RoutesEnum } from './routes';
+import Profile from '../../pages/Profile';
+import Landing from '../../pages/Landing';
+import Spending from '../../pages/Spending';
+import AppLayout from '../../pages/AppLayout';
+import ProtectedRoute from './protectedRoute';
+import Investments from '../../pages/Investments';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 const AppRoute: React.FunctionComponent<any> = (): JSX.Element => {
 	return (
@@ -24,6 +26,22 @@ const AppRoute: React.FunctionComponent<any> = (): JSX.Element => {
 						element={
 							<ProtectedRoute>
 								<Home />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path={RoutesEnum.SPENDING}
+						element={
+							<ProtectedRoute>
+								<Spending />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path={RoutesEnum.INVESTMENTS}
+						element={
+							<ProtectedRoute>
+								<Investments />
 							</ProtectedRoute>
 						}
 					/>

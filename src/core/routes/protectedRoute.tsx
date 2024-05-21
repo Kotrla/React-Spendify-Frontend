@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Location, Navigate, useLocation } from 'react-router-dom';
-import { selectCurrentToken } from '../store/features/auth/authSlice';
+import { selectCurrentToken } from '../../store/features/auth/authSlice';
 
 type ProtectedRouteProps = {
 	children: JSX.Element;

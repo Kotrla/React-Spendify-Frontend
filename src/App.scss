@@ -9,3 +9,11 @@
 .active {
 	font-weight: 800 !important;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px #eebd4a inset !important;
+	-webkit-text-fill-color: #ffffff !important;
+}

@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Button, Box } from '@mui/material';
+import { RoutesEnum } from '../core/routes/routes';
 import { Outlet, Link } from 'react-router-dom';
-import { RoutesEnum } from '../config/routes';
+import Sidemenu from '../core/components/Sidemenu';
+import { AccountBox, BarChart, CreditCard, RequestQuote } from '@mui/icons-material';
 
-const AppLayout: React.FunctionComponent<any> = (): JSX.Element => {
+export interface SidemenuItemsEnum {
+	text: string;
+	icon: ReactElement;
+	url: RoutesEnum;
+}
+
+const sidemenuItems: SidemenuItemsEnum[] = [
+	{
+		text: 'Dashboard',
+		icon: <BarChart />,
+		url: RoutesEnum.HOME,
+	},
+	{
+		text: 'Spending',
+		icon: <CreditCard />,
+		url: RoutesEnum.SPENDING,
+	},
+	{
+		text: 'Investments',
+		icon: <RequestQuote />,
+		url: RoutesEnum.INVESTMENTS,
+	},
+	{
+		text: 'Profile',
+		icon: <AccountBox />,
+		url: RoutesEnum.PROFILE,
+	},
+];
+
+const AppLayout: React.FunctionComponent = (): JSX.Element => {
 	return (
 		<Box>
-			<Box sx={{ mb: 2 }}>
-				<Button variant="contained" component={Link} to="/">
-					Landing
-				</Button>
-				<Button variant="contained" component={Link} to={RoutesEnum.HOME} sx={{ ml: 2 }}>
-					Home
-				</Button>
-				<Button variant="contained" component={Link} to={RoutesEnum.PROFILE} sx={{ ml: 2 }}>
-					Profile
-				</Button>
-			</Box>
-			<Outlet />
+			<Sidemenu
+				content={
+					<>
+						<Box sx={{ mb: 2 }}>
+							<Button variant="contained" component={Link} to="/">
+								Landing
+							</Button>
+						</Box>
+						<Outlet />
+					</>
+				}
+				sidemenuItems={sidemenuItems}
+			/>
 		</Box>
 	);
 };

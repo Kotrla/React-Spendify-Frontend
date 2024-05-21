@@ -1,22 +1,6 @@
 import React from 'react';
-import { createTheme } from '@mui/material/styles';
-import { Avatar, Box, Container, CssBaseline, Grid, Paper, Typography } from '@mui/material';
 import LoginPage from './Login';
-
-// Define a custom theme with dark background color and orange for logo
-const theme = createTheme({
-	palette: {
-		background: {
-			default: '#2F4858', // Dark background color
-		},
-		primary: {
-			main: '#F38819', // Logo color
-		},
-		text: {
-			primary: '#fff', // Text color
-		},
-	},
-});
+import { Box, CssBaseline, Grid, Paper, Typography } from '@mui/material';
 
 const Landing: React.FC = () => {
 	return (

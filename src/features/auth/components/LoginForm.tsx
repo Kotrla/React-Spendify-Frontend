@@ -6,7 +6,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { useAppDispatch } from '../../../store/hooks';
 import { setCredentials } from '../../../store/features/auth/authSlice';
 import { useLoginMutation } from '../../../store/services/authService';
-import { RoutesEnum } from '../../../config/routes';
+import { RoutesEnum } from '../../../core/routes/routes';
 
 const LoginForm: React.FC = () => {
 	const navigate = useNavigate();
