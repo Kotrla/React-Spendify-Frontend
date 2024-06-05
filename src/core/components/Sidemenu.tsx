@@ -1,15 +1,14 @@
 import AppBar from './AppBar';
 import Drawer, { DrawerHeader } from './Drawer';
 import { Box, CssBaseline } from '@mui/material';
-import React, { useState, ReactNode } from 'react';
-import { SidemenuItemsEnum } from '../../pages/AppLayout';
+import { ISidemenuItems } from '../../pages/AppLayout';
+import React, { useState, PropsWithChildren } from 'react';
 
-interface SidemenuProps {
-	content: ReactNode;
-	sidemenuItems: SidemenuItemsEnum[];
+interface ISidemenuProps {
+	sidemenuItems: ISidemenuItems[];
 }
 
-const Sidemenu: React.FC<SidemenuProps> = ({ content, sidemenuItems }) => {
+const Sidemenu: React.FC<PropsWithChildren<ISidemenuProps>> = ({ children, sidemenuItems }) => {
 	const [open, setOpen] = useState(true);
 
 	const handleDrawerOpen = () => {
@@ -20,7 +19,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ content, sidemenuItems }) => {
 		setOpen(false);
 	};
 
-	const MemoizedContent = React.memo(() => <>{content}</>);
+	const MemoizedChildren = React.memo(() => <>{children}</>);
 
 	return (
 		<Box sx={{ display: 'flex' }}>
@@ -29,7 +28,7 @@ const Sidemenu: React.FC<SidemenuProps> = ({ content, sidemenuItems }) => {
 			<Drawer open={open} handleDrawerClose={handleDrawerClose} sidemenuItems={sidemenuItems} />
 			<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 				<DrawerHeader />
-				<MemoizedContent />
+				<MemoizedChildren />
 			</Box>
 		</Box>
 	);

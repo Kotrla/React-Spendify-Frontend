@@ -26,6 +26,7 @@ const customFetchBase: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryEr
 		if (includeHeaders) {
 			const token = (api.getState() as RootState).auth.access_token;
 			const headers = new Headers();
+
 			if (token) {
 				headers.set('Authorization', `Bearer ${token}`);
 			}

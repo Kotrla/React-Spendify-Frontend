@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useUrlContains from '../hooks/useUrlContains';
-import { SidemenuItemsEnum } from '../../pages/AppLayout';
+import { ISidemenuItems } from '../../pages/AppLayout';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import {
@@ -20,10 +20,10 @@ import {
 	useTheme,
 } from '@mui/material';
 
-interface DrawerProps {
+interface IDrawerProps {
 	open: boolean;
 	handleDrawerClose: () => void;
-	sidemenuItems: SidemenuItemsEnum[];
+	sidemenuItems: ISidemenuItems[];
 }
 
 const drawerWidth = 240;
@@ -74,7 +74,7 @@ const StyledDrawer = styled(MuiDrawer, {
 	}),
 }));
 
-const Drawer: React.FC<DrawerProps> = ({ open, handleDrawerClose, sidemenuItems }) => {
+const Drawer: React.FC<IDrawerProps> = ({ open, handleDrawerClose, sidemenuItems }) => {
 	const theme = useTheme();
 	const urlContainsArray = sidemenuItems.map(item => useUrlContains(item.url));
 

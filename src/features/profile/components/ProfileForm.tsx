@@ -1,10 +1,15 @@
 import React from 'react';
-import { IAuthFormProps } from '../models';
-import useAuthForm from '../hooks/useAuthForm';
+import { useForm } from 'react-hook-form';
+import { IProfileFormInputs, IProfileFormProps } from '../models';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
-const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit, submitButtonText }) => {
-	const { register, handleSubmit, errors } = useAuthForm(onSubmit);
+const ProfileForm: React.FC<IProfileFormProps> = ({ title, onSubmit, submitButtonText, defaultValues }) => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isDirty, isValid },
+		reset,
+	} = useForm<IProfileFormInputs>({ defaultValues });
 
 	return (
 		<Container maxWidth="xs">
@@ -12,14 +17,13 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit, submitButtonText 
 				<Typography variant="h5" component="h1" gutterBottom>
 					{title}
 				</Typography>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit(data => onSubmit(data, reset))}>
 					<TextField
 						label="Email"
 						variant="outlined"
 						margin="normal"
 						fullWidth
 						{...register('email', {
-							required: 'Email is required',
 							pattern: {
 								value: /^\S+@\S+$/i,
 								message: 'Invalid email address',
@@ -29,19 +33,29 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit, submitButtonText 
 						helperText={errors.email?.message}
 					/>
 					<TextField
+						label="Name"
+						variant="outlined"
+						margin="normal"
+						fullWidth
+						{...register('name', {
+							minLength: { value: 2, message: 'Name must be at least 2 characters long' },
+						})}
+						error={!!errors.name}
+						helperText={errors.name?.message}
+					/>
+					<TextField
 						label="Password"
 						variant="outlined"
 						margin="normal"
 						fullWidth
 						type="password"
 						{...register('password', {
-							required: 'Password is required',
 							minLength: { value: 6, message: 'Password must be at least 6 characters long' },
 						})}
 						error={!!errors.password}
 						helperText={errors.password?.message}
 					/>
-					<Button type="submit" variant="contained" color="primary" fullWidth>
+					<Button type="submit" variant="contained" color="primary" fullWidth disabled={!isDirty || !isValid}>
 						{submitButtonText}
 					</Button>
 				</form>
@@ -50,4 +64,4 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit, submitButtonText 
 	);
 };
 
-export default AuthForm;
+export default ProfileForm;

@@ -1,19 +1,19 @@
 import React from 'react';
 import AuthForm from './AuthForm';
-import { AuthFormInputs } from '../models';
+import { IAuthFormInputs } from '../models';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 import { useAppDispatch } from '../../../store/hooks';
+import { RoutesEnum } from '../../../core/routes/routes';
 import { setCredentials } from '../../../store/features/auth/authSlice';
 import { useLoginMutation } from '../../../store/services/authService';
-import { RoutesEnum } from '../../../core/routes/routes';
 
 const LoginForm: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const [login, { isLoading }] = useLoginMutation();
 
-	const onSubmit: SubmitHandler<AuthFormInputs> = async data => {
+	const onSubmit: SubmitHandler<IAuthFormInputs> = async data => {
 		try {
 			const response = await login(data);
 

@@ -2,12 +2,12 @@ import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar as MuiAppBar, Toolbar, IconButton, styled } from '@mui/material';
 
-interface AppBarProps {
+interface IAppBarProps {
 	open: boolean;
 	handleDrawerOpen: () => void;
 }
 
-interface StyledAppBarProps {
+interface IStyledAppBarProps {
 	open: boolean;
 }
 
@@ -15,7 +15,7 @@ const drawerWidth = 240;
 
 const StyledAppBar = styled(MuiAppBar, {
 	shouldForwardProp: prop => prop !== 'open',
-})<StyledAppBarProps>(({ theme, open }) => ({
+})<IStyledAppBarProps>(({ theme, open }) => ({
 	zIndex: theme.zIndex.drawer + 1,
 	transition: theme.transitions.create(['width', 'margin'], {
 		easing: theme.transitions.easing.sharp,
@@ -31,7 +31,7 @@ const StyledAppBar = styled(MuiAppBar, {
 	}),
 }));
 
-const AppBar: React.FC<AppBarProps> = ({ open, handleDrawerOpen }) => (
+const AppBar: React.FC<IAppBarProps> = ({ open, handleDrawerOpen }) => (
 	<StyledAppBar position="fixed" open={open}>
 		<Toolbar>
 			<IconButton

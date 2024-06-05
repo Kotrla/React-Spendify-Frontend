@@ -1,12 +1,12 @@
 import { SubmitHandler } from 'react-hook-form';
 
-export interface AuthFormInputs {
+export interface IAuthFormInputs {
 	email: string;
 	password: string;
 }
 
-export interface AuthFormProps {
+export interface IAuthFormProps {
 	title: string;
-	onSubmit: SubmitHandler<AuthFormInputs>;
+	onSubmit: SubmitHandler<IAuthFormInputs>;
 	submitButtonText: string;
 }

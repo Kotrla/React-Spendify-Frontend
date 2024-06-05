@@ -1,4 +1,4 @@
-export interface GenericResponse {
+export interface IGenericResponse {
 	status: string;
 	message: string;
 }
@@ -19,10 +19,9 @@ export interface IPostRequest {
 export interface IUser {
 	name: string;
 	email: string;
-	role: string;
-	photo: string;
+	password: string;
 	_id: string;
-	id: string;
+	id: number;
 	created_at: string;
 	updated_at: string;
 	__v: number;

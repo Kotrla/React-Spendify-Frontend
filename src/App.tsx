@@ -1,5 +1,6 @@
 import './App.scss';
 import AppRoute from './core/routes/AppRoute';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
@@ -25,7 +26,9 @@ export const theme = createTheme({
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
-			<AppRoute />
+			<BrowserRouter>
+				<AppRoute />
+			</BrowserRouter>
 		</ThemeProvider>
 	);
 }

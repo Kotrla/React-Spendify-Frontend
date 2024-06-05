@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface IAuthState {
-	email: string | null;
 	access_token: string | null;
+	userID: number | null;
 }
 
 const INITIAL_STATE = {
-	email: null,
 	access_token: null,
+	userID: null,
 } as IAuthState;
 
 const authSlice = createSlice({
@@ -17,10 +17,10 @@ const authSlice = createSlice({
 	initialState: INITIAL_STATE,
 	reducers: {
 		setCredentials: (state: IAuthState, action: PayloadAction<IAuthState>) => {
-			const { email, access_token } = action.payload;
+			const { access_token, userID } = action.payload;
 
-			state.email = email;
 			state.access_token = access_token;
+			state.userID = userID;
 		},
 		logout: () => INITIAL_STATE,
 	},
@@ -30,5 +30,5 @@ export const { setCredentials, logout } = authSlice.actions;
 
 export default authSlice.reducer;
 
-export const selectCurrentEmail = (state: RootState) => state!.auth.email;
 export const selectCurrentToken = (state: RootState) => state!.auth.access_token;
+export const selectCurrentUserID = (state: RootState) => state!.auth.userID;

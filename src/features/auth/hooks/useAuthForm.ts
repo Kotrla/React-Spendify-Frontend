@@ -1,12 +1,12 @@
-import { AuthFormInputs } from '../models';
+import { IAuthFormInputs } from '../models';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-const useAuthForm = (onSubmit: SubmitHandler<AuthFormInputs>) => {
+const useAuthForm = (onSubmit: SubmitHandler<IAuthFormInputs>) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<AuthFormInputs>();
+	} = useForm<IAuthFormInputs>();
 
 	return {
 		register,

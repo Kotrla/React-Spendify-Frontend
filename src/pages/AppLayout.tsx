@@ -5,13 +5,13 @@ import { Outlet, Link } from 'react-router-dom';
 import Sidemenu from '../core/components/Sidemenu';
 import { AccountBox, BarChart, CreditCard, RequestQuote } from '@mui/icons-material';
 
-export interface SidemenuItemsEnum {
+export interface ISidemenuItems {
 	text: string;
 	icon: ReactElement;
 	url: RoutesEnum;
 }
 
-const sidemenuItems: SidemenuItemsEnum[] = [
+const sidemenuItems: ISidemenuItems[] = [
 	{
 		text: 'Dashboard',
 		icon: <BarChart />,
@@ -37,19 +37,16 @@ const sidemenuItems: SidemenuItemsEnum[] = [
 const AppLayout: React.FunctionComponent = (): JSX.Element => {
 	return (
 		<Box>
-			<Sidemenu
-				content={
-					<>
-						<Box sx={{ mb: 2 }}>
-							<Button variant="contained" component={Link} to="/">
-								Landing
-							</Button>
-						</Box>
-						<Outlet />
-					</>
-				}
-				sidemenuItems={sidemenuItems}
-			/>
+			<Sidemenu sidemenuItems={sidemenuItems}>
+				<>
+					<Box sx={{ mb: 2 }}>
+						<Button variant="contained" component={Link} to="/">
+							Landing
+						</Button>
+					</Box>
+					<Outlet />
+				</>
+			</Sidemenu>
 		</Box>
 	);
 };
