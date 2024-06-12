@@ -1,7 +1,12 @@
 import React from 'react';
+import SpendingTabs from '../features/spending/components/SpendingTabs';
 
 function Spending() {
-	return <div>Spending</div>;
+	return (
+		<>
+			<SpendingTabs />
+		</>
+	);
 }
 
 export default Spending;

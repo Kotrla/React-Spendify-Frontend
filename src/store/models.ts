@@ -1,3 +1,5 @@
+import { SpendingType } from '../features/spending/enums';
+
 export interface IGenericResponse {
 	status: string;
 	message: string;
@@ -36,4 +38,15 @@ export interface IPostResponse {
 	user: IUser;
 	created_at: string;
 	updated_at: string;
+}
+
+export interface ISpending {
+	id: number;
+	title: string;
+	type: SpendingType;
+	category: string;
+	amount: number;
+	date: Date;
+	userId: number;
+	user?: IUser;
 }

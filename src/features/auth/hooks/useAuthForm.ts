@@ -6,7 +6,9 @@ const useAuthForm = (onSubmit: SubmitHandler<IAuthFormInputs>) => {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<IAuthFormInputs>();
+	} = useForm<IAuthFormInputs>({
+		mode: 'onChange',
+	});
 
 	return {
 		register,

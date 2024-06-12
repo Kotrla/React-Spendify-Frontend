@@ -1,6 +1,7 @@
 import React from 'react';
 import { RootState } from '../store/store';
 import { useAppSelector } from '../store/hooks';
+import { CircularProgress } from '@mui/material';
 import { getChangedData } from '../features/profile/utils';
 import ProfileForm from '../features/profile/components/ProfileForm';
 import { selectCurrentUserID } from '../store/features/auth/authSlice';
@@ -28,7 +29,7 @@ const Profile: React.FC = () => {
 	};
 
 	if (isLoading) {
-		return <div>Loading...</div>;
+		return <CircularProgress />;
 	}
 
 	return (
