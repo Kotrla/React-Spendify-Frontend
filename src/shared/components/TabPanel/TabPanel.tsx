@@ -9,7 +9,7 @@ const TabPanel: React.FC<TabPanelProps> = ({ children, value, index, ...other })
 			id={`tabpanel-${index}`}
 			aria-labelledby={`tab-${index}`}
 			{...other}>
-			{value === index && <Box py={3}>{children}</Box>}
+			{value === index && <Box py={1}>{children}</Box>}
 		</div>
 	);
 };

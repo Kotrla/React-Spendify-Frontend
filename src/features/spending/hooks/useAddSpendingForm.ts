@@ -1,16 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SpendingType } from '../enums';
 import { ISpending } from '../../../store/models';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useCreateSpendingMutation } from '../../../store/services/spendingService';
+import { useSpendingPeriod } from '../context/SpendingPeriodContext';
+import {
+	useCreateSpendingMutation,
+	useGetSpendingCategoriesQuery,
+} from '../../../store/services/spendingService';
 
-const useAddSpendingForm = (spendingType: SpendingType, handleClose: VoidFunction) => {
+const useAddSpendingForm = (initialSpendingType: SpendingType, handleClose: VoidFunction) => {
+	const { fromDate } = useSpendingPeriod();
+
 	const defaultValues: Partial<ISpending> = {
 		title: '',
-		type: spendingType || SpendingType.EXPENSE,
+		type: initialSpendingType || SpendingType.EXPENSE,
 		category: '',
 		amount: 0,
-		date: new Date().toISOString().split('T')[0],
+		date: fromDate,
 	};
 
 	const {
@@ -18,6 +24,7 @@ const useAddSpendingForm = (spendingType: SpendingType, handleClose: VoidFunctio
 		handleSubmit,
 		formState: { errors, isDirty, isValid },
 		reset,
+		watch,
 	} = useForm<Partial<ISpending>>({
 		mode: 'onChange',
 		defaultValues,
@@ -27,10 +34,18 @@ const useAddSpendingForm = (spendingType: SpendingType, handleClose: VoidFunctio
 	const [inputCategoryValue, setInputCategoryValue] = useState('');
 	const [isNewCategory, setIsNewCategory] = useState(false);
 
-	const categories = ['Food', 'Travel', 'Utilities', 'Health'];
+	const spendingType = watch('type', initialSpendingType);
+
+	const {
+		data: categoriesData,
+		isLoading: isCategoriesLoading,
+		refetch,
+	} = useGetSpendingCategoriesQuery({ spendingType });
+
+	const categories = categoriesData || [];
 
 	const handleCategoryBlur = () => {
-		if (inputCategoryValue && !categories.includes(inputCategoryValue)) {
+		if (inputCategoryValue && !categories.find(category => category.name === inputCategoryValue)) {
 			setIsNewCategory(true);
 		} else {
 			setIsNewCategory(false);
@@ -47,6 +62,10 @@ const useAddSpendingForm = (spendingType: SpendingType, handleClose: VoidFunctio
 		handleClose();
 		reset();
 	};
+
+	useEffect(() => {
+		refetch();
+	}, [spendingType, refetch]);
 
 	return {
 		register,

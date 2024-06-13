@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { SpendingTableProps } from '../models';
+import { ISpendingTableProps } from '../models';
 import { ISpending } from '../../../store/models';
+import { useSpendingPeriod } from '../context/SpendingPeriodContext';
 import { useGetSpendingByTypeQuery } from '../../../store/services/spendingService';
 import {
 	Table,
@@ -15,9 +16,14 @@ import {
 	useTheme,
 } from '@mui/material';
 
-const SpendingTable: React.FC<SpendingTableProps> = ({ spendingType }) => {
+const SpendingTable: React.FC<ISpendingTableProps> = ({ spendingType }) => {
 	const theme = useTheme();
-	const { data: spendingData, isLoading } = useGetSpendingByTypeQuery({ spendingType });
+	const { fromDate, toDate } = useSpendingPeriod();
+	const { data: spendingData, isLoading } = useGetSpendingByTypeQuery({
+		spendingType,
+		fromDate,
+		toDate,
+	});
 
 	const [order, setOrder] = useState<'asc' | 'desc'>('asc');
 	const [orderBy, setOrderBy] = useState<keyof ISpending>('title');

@@ -1,4 +1,3 @@
-// SpendingTabs.tsx
 import React, { useState } from 'react';
 import { SpendingType } from '../enums';
 import SpendingTable from './SpendingTable';
@@ -9,6 +8,7 @@ import AddSpendingModal from './AddSpendingModal';
 const SpendingTabs: React.FC = () => {
 	const [value, setValue] = useState(0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const spendingType = value === 0 ? SpendingType.EXPENSE : SpendingType.INCOME;
 
 	const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
 		setValue(newValue);
@@ -48,11 +48,7 @@ const SpendingTabs: React.FC = () => {
 				<SpendingTable spendingType={SpendingType.INCOME} />
 			</TabPanel>
 			{isModalOpen && (
-				<AddSpendingModal
-					isOpen={isModalOpen}
-					onClose={handleCloseModal}
-					spendingType={value === 0 ? SpendingType.EXPENSE : SpendingType.INCOME}
-				/>
+				<AddSpendingModal isOpen={isModalOpen} onClose={handleCloseModal} spendingType={spendingType} />
 			)}
 		</Box>
 	);

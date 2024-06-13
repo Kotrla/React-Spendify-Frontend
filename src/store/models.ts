@@ -39,14 +39,20 @@ export interface IPostResponse {
 	created_at: string;
 	updated_at: string;
 }
-
 export interface ISpending {
 	id: number;
 	title: string;
 	type: SpendingType;
 	category: string;
 	amount: number;
-	date: Date;
+	date: string;
 	userId: number;
-	user?: IUser;
+	spendingCategoryId: number;
+	spendingCategory: ISpendingCategory;
+}
+
+export interface ISpendingCategory {
+	id: number;
+	name: string;
+	userId?: number;
 }

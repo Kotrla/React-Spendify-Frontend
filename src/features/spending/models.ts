@@ -1,11 +1,20 @@
-import { SpendingType } from './enums';
+import { PeriodType, SpendingType } from './enums';
 
-export interface SpendingTableProps {
+export interface ISpendingTableProps {
 	spendingType: SpendingType;
 }
 
-export interface AddSpendingModalProps {
+export interface IAddSpendingModalProps {
 	isOpen: boolean;
 	onClose: () => void;
 	spendingType: SpendingType;
+}
+
+export interface ISpendingPeriodContextProps {
+	periodType: PeriodType;
+	selectedDate: Date;
+	fromDate: string;
+	toDate: string;
+	setPeriodType: (periodType: PeriodType) => void;
+	setSelectedDate: (date: Date) => void;
 }

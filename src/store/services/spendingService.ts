@@ -1,4 +1,5 @@
-import { ISpending } from '../models';
+// src/store/services/spendingService.ts
+import { ISpending, ISpendingCategory } from '../models';
 import { createApi } from '@reduxjs/toolkit/query/react';
 import customFetchBase from '../features/auth/customFetchBase';
 import { SpendingType } from '../../features/spending/enums';
@@ -8,9 +9,12 @@ export const spendingApi = createApi({
 	baseQuery: customFetchBase,
 	tagTypes: [SpendingType.EXPENSE, SpendingType.INCOME],
 	endpoints: builder => ({
-		getSpendingByType: builder.query<ISpending[], { spendingType: SpendingType }>({
-			query: ({ spendingType }) => ({
-				url: `spending/byType?spendingType=${spendingType}`,
+		getSpendingByType: builder.query<
+			ISpending[],
+			{ spendingType: SpendingType; fromDate: string; toDate: string }
+		>({
+			query: ({ spendingType, fromDate, toDate }) => ({
+				url: `spending/byType?spendingType=${spendingType}&fromDate=${fromDate}&toDate=${toDate}`,
 				method: 'GET',
 			}),
 			providesTags: (result, error, { spendingType }) => [spendingType],
@@ -23,7 +27,15 @@ export const spendingApi = createApi({
 			}),
 			invalidatesTags: (result, error, { data }) => [data.type],
 		}),
+		getSpendingCategories: builder.query<ISpendingCategory[], { spendingType: SpendingType }>({
+			query: ({ spendingType }) => ({
+				url: `spending/categories?spendingType=${spendingType}`,
+				method: 'GET',
+			}),
+			providesTags: (result, error, { spendingType }) => [spendingType],
+		}),
 	}),
 });
 
-export const { useGetSpendingByTypeQuery, useCreateSpendingMutation } = spendingApi;
+export const { useGetSpendingByTypeQuery, useCreateSpendingMutation, useGetSpendingCategoriesQuery } =
+	spendingApi;

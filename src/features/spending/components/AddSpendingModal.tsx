@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { SpendingType } from '../enums';
 import { yellow } from '@mui/material/colors';
-import { AddSpendingModalProps } from '../models';
+import { IAddSpendingModalProps } from '../models';
 import Autocomplete from '@mui/material/Autocomplete';
 import useAddSpendingForm from '../hooks/useAddSpendingForm';
 import {
@@ -29,7 +29,7 @@ const modalStyles = {
 	maxWidth: '600px',
 };
 
-const AddSpendingModal: React.FC<AddSpendingModalProps> = ({ isOpen, onClose, spendingType }) => {
+const AddSpendingModal: React.FC<IAddSpendingModalProps> = ({ isOpen, onClose, spendingType }) => {
 	const handleClose = () => {
 		onClose();
 		reset();
@@ -101,7 +101,7 @@ const AddSpendingModal: React.FC<AddSpendingModalProps> = ({ isOpen, onClose, sp
 							<FormControl fullWidth error={!!errors['category']}>
 								<Autocomplete
 									freeSolo
-									options={categories}
+									options={categories.map(category => category.name)}
 									inputValue={inputCategoryValue}
 									onInputChange={(event, newInputValue) => {
 										setInputCategoryValue(newInputValue);
