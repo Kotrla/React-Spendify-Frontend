@@ -1,8 +1,7 @@
-// src/store/services/spendingService.ts
 import { ISpending, ISpendingCategory } from '../models';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import customFetchBase from '../features/auth/customFetchBase';
 import { SpendingType } from '../../features/spending/enums';
+import customFetchBase from '../features/auth/customFetchBase';
 
 export const spendingApi = createApi({
 	reducerPath: 'spendingApi',

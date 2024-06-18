@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { SpendingType } from '../enums';
+import { useEffect, useState } from 'react';
 import { ISpending } from '../../../store/models';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useSpendingPeriod } from '../context/SpendingPeriodContext';
