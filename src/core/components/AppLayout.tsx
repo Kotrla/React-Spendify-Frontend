@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { Button, Box } from '@mui/material';
-import { RoutesEnum } from '../core/routes/routes';
+import { RoutesEnum } from '../routes/routes';
 import { Outlet, Link } from 'react-router-dom';
-import Sidemenu from '../core/components/Sidemenu';
+import Sidemenu from './Sidemenu';
 import { AccountBox, BarChart, CreditCard, RequestQuote } from '@mui/icons-material';
 
 export interface ISidemenuItems {
@@ -38,14 +38,7 @@ const AppLayout: React.FunctionComponent = (): JSX.Element => {
 	return (
 		<Box>
 			<Sidemenu sidemenuItems={sidemenuItems}>
-				<>
-					<Box sx={{ mb: 2 }}>
-						<Button variant="contained" component={Link} to="/">
-							Landing
-						</Button>
-					</Box>
-					<Outlet />
-				</>
+				<Outlet />
 			</Sidemenu>
 		</Box>
 	);

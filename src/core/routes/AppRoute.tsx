@@ -4,7 +4,7 @@ import { RoutesEnum } from './routes';
 import Profile from '../../pages/Profile';
 import Landing from '../../pages/Landing';
 import Spending from '../../pages/Spending';
-import AppLayout from '../../pages/AppLayout';
+import AppLayout from '../components/AppLayout';
 import ProtectedRoute from './ProtectedRoute';
 import Investments from '../../pages/Investments';
 import { Outlet, Route, Routes } from 'react-router-dom';
