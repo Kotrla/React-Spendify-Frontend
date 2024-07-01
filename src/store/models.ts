@@ -1,4 +1,5 @@
 import { SpendingType } from '../features/spending/enums';
+import { InvestmentType } from '../features/investments/enums';
 
 export interface IGenericResponse {
 	status: string;
@@ -116,4 +117,32 @@ export interface IStock {
 export interface IStocksLiveResponse {
 	total: number;
 	stocks: IStock[];
+}
+
+export interface IInvestment {
+	id: number;
+	title: string;
+	type: InvestmentType;
+	boughtValue: number;
+	currentValue: number;
+	date: string;
+	userId: number;
+}
+
+export interface ICreateInvestmentRequest {
+	title: string;
+	type: InvestmentType;
+	boughtValue: number;
+	currentValue: number;
+	date: string;
+	userId: number;
+}
+
+export interface IUpdateInvestmentRequest {
+	title?: string;
+	type?: InvestmentType;
+	boughtValue?: number;
+	currentValue?: number;
+	date?: string;
+	userId?: number;
 }

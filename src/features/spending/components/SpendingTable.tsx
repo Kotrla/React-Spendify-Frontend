@@ -15,6 +15,7 @@ import {
 	TableSortLabel,
 	useTheme,
 } from '@mui/material';
+import { formatDate } from '../../../shared/utils/date.utils';
 
 const SpendingTable: React.FC<ISpendingTableProps> = ({ spendingType }) => {
 	const theme = useTheme();
@@ -78,7 +79,7 @@ const SpendingTable: React.FC<ISpendingTableProps> = ({ spendingType }) => {
 							<TableCell>{spending.title}</TableCell>
 							<TableCell>{spending.type}</TableCell>
 							<TableCell>{spending.category}</TableCell>
-							<TableCell>{new Date(spending.date).toLocaleDateString()}</TableCell>
+							<TableCell>{formatDate(spending.date)}</TableCell>
 							<TableCell>{spending.amount}</TableCell>
 						</TableRow>
 					))}
