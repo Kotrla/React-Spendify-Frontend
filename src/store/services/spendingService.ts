@@ -26,6 +26,21 @@ export const spendingApi = createApi({
 			}),
 			invalidatesTags: (result, error, { data }) => [data.type],
 		}),
+		updateSpending: builder.mutation<ISpending, { id: number; data: Partial<ISpending> }>({
+			query: ({ id, data }) => ({
+				url: `spending/${id}`,
+				method: 'PATCH',
+				body: data,
+			}),
+			invalidatesTags: (result, error, { data }) => [data.type],
+		}),
+		deleteSpending: builder.mutation<{ message: string }, number>({
+			query: id => ({
+				url: `spending/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: (result, error, { id }) => [SpendingType.EXPENSE, SpendingType.INCOME],
+		}),
 		getSpendingCategories: builder.query<ISpendingCategory[], { spendingType: SpendingType }>({
 			query: ({ spendingType }) => ({
 				url: `spending/categories?spendingType=${spendingType}`,
@@ -36,5 +51,10 @@ export const spendingApi = createApi({
 	}),
 });
 
-export const { useGetSpendingByTypeQuery, useCreateSpendingMutation, useGetSpendingCategoriesQuery } =
-	spendingApi;
+export const {
+	useGetSpendingByTypeQuery,
+	useCreateSpendingMutation,
+	useUpdateSpendingMutation,
+	useDeleteSpendingMutation,
+	useGetSpendingCategoriesQuery,
+} = spendingApi;

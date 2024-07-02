@@ -29,7 +29,12 @@ const modalStyles = {
 	maxWidth: '600px',
 };
 
-const AddSpendingModal: React.FC<IAddSpendingModalProps> = ({ isOpen, onClose, spendingType }) => {
+const AddSpendingModal: React.FC<IAddSpendingModalProps> = ({
+	isOpen,
+	onClose,
+	spendingType,
+	initialValues,
+}) => {
 	const handleClose = () => {
 		onClose();
 		reset();
@@ -51,7 +56,7 @@ const AddSpendingModal: React.FC<IAddSpendingModalProps> = ({ isOpen, onClose, s
 		handleCategoryBlur,
 		onSubmit,
 		categories,
-	} = useAddSpendingForm(spendingType, handleClose);
+	} = useAddSpendingForm(spendingType, handleClose, initialValues);
 
 	const modalContent = (
 		<Modal open={isOpen} onClose={handleClose}>

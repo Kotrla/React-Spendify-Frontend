@@ -1,3 +1,4 @@
+import { ISpending } from '../../store/models';
 import { PeriodType, SpendingType } from './enums';
 
 export interface ISpendingTableProps {
@@ -8,6 +9,7 @@ export interface IAddSpendingModalProps {
 	isOpen: boolean;
 	onClose: () => void;
 	spendingType: SpendingType;
+	initialValues?: ISpending;
 }
 
 export interface ISpendingPeriodContextProps {

@@ -8,10 +8,14 @@ import {
 	useGetSpendingCategoriesQuery,
 } from '../../../store/services/spendingService';
 
-const useAddSpendingForm = (initialSpendingType: SpendingType, handleClose: VoidFunction) => {
+const useAddSpendingForm = (
+	initialSpendingType: SpendingType,
+	handleClose: VoidFunction,
+	initialValues?: ISpending
+) => {
 	const { fromDate } = useSpendingPeriod();
 
-	const defaultValues: Partial<ISpending> = {
+	const defaultValues: Partial<ISpending> = initialValues ?? {
 		title: '',
 		type: initialSpendingType || SpendingType.EXPENSE,
 		category: '',
