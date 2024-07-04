@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import { Box, Typography, Collapse, Button, Paper, CircularProgress } from '@mui/material';
 import { useGetAllInvestmentsQuery } from '../../../store/services/investmentsService';
-import { Bar, Doughnut } from 'react-chartjs-2';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -14,13 +14,6 @@ import {
 } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
-
-const getFormattedDate = date => {
-	const year = date.getFullYear();
-	const month = String(date.getMonth() + 1).padStart(2, '0');
-	const day = String(date.getDate()).padStart(2, '0');
-	return `${year}-${month}-${day}`;
-};
 
 const colors = [
 	'#FF6384',

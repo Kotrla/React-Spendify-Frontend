@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Box, Typography, Collapse, Button, Paper, CircularProgress } from '@mui/material';
-import { useGetSpendingByTypeQuery } from '../../../store/services/spendingService';
-import { SpendingType } from '../../spending/enums';
+import { useState } from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2';
+import { SpendingType } from '../../spending/enums';
+import { useGetSpendingByTypeQuery } from '../../../store/services/spendingService';
+import { Box, Typography, Collapse, Button, Paper, CircularProgress } from '@mui/material';
 import {
 	Chart as ChartJS,
 	CategoryScale,

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Bar } from 'react-chartjs-2';
+import { SpendingType } from '../../spending/enums';
 import { Box, Typography, Collapse, Button, Paper } from '@mui/material';
 import { useGetSpendingByTypeQuery } from '../../../store/services/spendingService';
 import { useGetAllInvestmentsQuery } from '../../../store/services/investmentsService';
-import { SpendingType } from '../../spending/enums';
-import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
