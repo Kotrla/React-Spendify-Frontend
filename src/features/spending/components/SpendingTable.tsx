@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
 import { ISpendingTableProps } from '../models';
 import { ISpending } from '../../../store/models';
+import AddSpendingModal from './AddSpendingModal';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { formatDate } from '../../../shared/utils/date.utils';
 import { useSpendingPeriod } from '../context/SpendingPeriodContext';
 import {
 	useGetSpendingByTypeQuery,
@@ -21,10 +25,6 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { formatDate } from '../../../shared/utils/date.utils';
-import AddSpendingModal from './AddSpendingModal';
 
 const SpendingTable: React.FC<ISpendingTableProps> = ({ spendingType }) => {
 	const theme = useTheme();

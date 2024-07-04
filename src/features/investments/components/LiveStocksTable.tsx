@@ -12,7 +12,6 @@ import {
 	TableSortLabel,
 	useTheme,
 	Pagination,
-	Box,
 	Typography,
 } from '@mui/material';
 
@@ -120,7 +119,7 @@ const LiveStocksTable: React.FC = () => {
 			<Pagination
 				count={Math.ceil(stockData.total / limit)}
 				page={page}
-				onChange={(event, value) => setPage(value)}
+				onChange={(_event, value) => setPage(value)}
 			/>
 		</>
 	);

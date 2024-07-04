@@ -1,4 +1,4 @@
-import { Container, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import CombinedMetrics from '../features/dashboard/components/CombinedMetrics';
 import SpendingsSection from '../features/dashboard/components/SpendingsSection';
 import InvestmentsSection from '../features/dashboard/components/InvestmentsSection';

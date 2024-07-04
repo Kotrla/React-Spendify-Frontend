@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useForm, Controller } from 'react-hook-form';
 import { InvestmentType } from '../enums';
+import { useForm, Controller } from 'react-hook-form';
 import { ICreateInvestmentRequest } from '../../../store/models';
 import {
 	useAddInvestmentMutation,

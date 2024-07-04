@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
 import dayjs from 'dayjs';
 import { PeriodType } from '../enums';
 import { ISpendingPeriodContextProps } from '../models';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 
 const SpendingPeriodContext = createContext<ISpendingPeriodContextProps | undefined>(undefined);
 

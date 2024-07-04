@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AuthTabValue } from '../features/auth/enums';
 import { Box, Tab, Tabs } from '@mui/material';
+import { AuthTabValue } from '../features/auth/enums';
 import LoginForm from '../features/auth/components/LoginForm';
 import RegisterForm from '../features/auth/components/RegisterForm';
 

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { SpendingType } from '../enums';
 import SpendingTable from './SpendingTable';
+import AddSpendingModal from './AddSpendingModal';
 import { AppBar, Tabs, Tab, Box, Button } from '@mui/material';
 import TabPanel from '../../../shared/components/TabPanel/TabPanel';
-import AddSpendingModal from './AddSpendingModal';
 
 const SpendingTabs: React.FC = () => {
 	const [value, setValue] = useState(0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const spendingType = value === 0 ? SpendingType.EXPENSE : SpendingType.INCOME;
 
-	const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+	const handleChange = (_event: React.ChangeEvent<{}>, newValue: number) => {
 		setValue(newValue);
 	};
 

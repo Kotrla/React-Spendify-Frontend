@@ -1,24 +1,6 @@
 import { SpendingType } from '../features/spending/enums';
 import { InvestmentType } from '../features/investments/enums';
 
-export interface IGenericResponse {
-	status: string;
-	message: string;
-}
-
-export interface IResetPasswordRequest {
-	resetToken: string;
-	password: string;
-	passwordConfirm: string;
-}
-
-export interface IPostRequest {
-	title: string;
-	content: string;
-	image: string;
-	user: string;
-}
-
 export interface IUser {
 	name: string;
 	email: string;

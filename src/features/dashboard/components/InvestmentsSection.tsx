@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2';
-import { Box, Typography, Collapse, Button, Paper, CircularProgress } from '@mui/material';
 import { useGetAllInvestmentsQuery } from '../../../store/services/investmentsService';
+import { Box, Typography, Collapse, Button, Paper, CircularProgress } from '@mui/material';
 import {
 	Chart as ChartJS,
 	CategoryScale,

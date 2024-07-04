@@ -108,7 +108,7 @@ const AddSpendingModal: React.FC<IAddSpendingModalProps> = ({
 									freeSolo
 									options={categories.map(category => category.name)}
 									inputValue={inputCategoryValue}
-									onInputChange={(event, newInputValue) => {
+									onInputChange={(_event, newInputValue) => {
 										setInputCategoryValue(newInputValue);
 									}}
 									onBlur={handleCategoryBlur}
